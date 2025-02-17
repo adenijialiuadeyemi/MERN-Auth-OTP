@@ -31,6 +31,7 @@ const login = () => {
           setIsLoggedin(true);
           await getUserData();
           navigate("/");
+          toast.success(data.message);
         } else {
           toast.error(data.message);
         }
@@ -51,7 +52,7 @@ const login = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error(error.message);
+      toast.error(error.response?.data.message);
     }
   };
 
@@ -70,7 +71,6 @@ const login = () => {
             ? "Create your Account"
             : "Login to your Account"}
         </p>
-
         <form onSubmit={onSubmitHandler}>
           {state === "Sign up" && (
             <div className="flex mb-4 items-center gap-3 px-5 py-2.5 rounded-full bg-[#333a5c]">

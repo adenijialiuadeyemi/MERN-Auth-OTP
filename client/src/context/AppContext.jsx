@@ -12,6 +12,17 @@ export const AppContextProvider = (props) => {
 
   const [userData, setUserData] = useState(false);
 
+  const getUserData = async () => {
+    try {
+      const { data } = await axios.get(`${backendUrl}/api/user/data`);
+
+      data.success ? setUserData(data.data) : toast.error(data.message);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
+
   const getAuthState = async () => {
     try {
       const { data } = await axios.get(`${backendUrl}/api/auth/is-auth`);
@@ -23,17 +34,6 @@ export const AppContextProvider = (props) => {
       }
     } catch (error) {
       console.log(error);
-      toast.error(error.message);
-    }
-  };
-  const getUserData = async () => {
-    try {
-      const { data } = await axios.get(`${backendUrl}/api/user/data`);
-
-      data.success ? setUserData(data.data) : toast.error(data.message);
-    } catch (error) {
-      console.log(error);
-      toast.error(error.message);
     }
   };
 

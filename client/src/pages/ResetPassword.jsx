@@ -44,7 +44,7 @@ const ResetPassword = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error(error.message);
+      toast.error(error.response?.data.message);
     }
   };
   const navigate = useNavigate();
@@ -68,7 +68,7 @@ const ResetPassword = () => {
       data.success && setIsEmailSent(true);
     } catch (error) {
       console.log(error);
-      toast.error(error.message);
+      toast.error(error.response?.data.message);
     }
   };
 
@@ -80,7 +80,7 @@ const ResetPassword = () => {
       setIsOtpSubmitted(true);
     } catch (error) {
       console.log(error);
-      toast.error(error.message);
+      toast.error(error.response?.data.message);
     }
   };
 
@@ -99,7 +99,7 @@ const ResetPassword = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error(error.message);
+      toast.error(error.response?.data.message);
     }
   };
   return (
